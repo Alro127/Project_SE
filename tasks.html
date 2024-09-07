@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="vi, en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Working calendar</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+      }
+
+      .menu {
+        width: 250px;
+        background-color: #333;
+        color: #fff;
+        height: 100vh;
+        padding: 20px;
+        box-sizing: border-box;
+      }
+
+      .menu a {
+        color: #fff;
+        text-decoration: none;
+        display: block;
+        padding: 10px 10px;
+        border-bottom: 1px solid #444;
+      }
+
+      .menu a:hover {
+        background-color: #575757;
+      }
+
+      .content {
+        flex: 1;
+        padding: 20px;
+        box-sizing: border-box;
+      }
+
+      h1 {
+        margin-top: 0;
+      }
+
+      .task-list {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      .task-list li {
+        margin: 10px 0;
+        display: flex;
+        align-items: center;
+      }
+
+      .task-list input[type="checkbox"] {
+        margin-right: 10px;
+      }
+
+      .add-task {
+        margin-top: 20px;
+      }
+
+      .add-task input[type="text"] {
+        padding: 10px;
+        width: calc(100% - 110px);
+        box-sizing: border-box;
+      }
+
+      .add-task button {
+        padding: 10px;
+        width: 100px;
+        background-color: #333;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+
+      .add-task button:hover {
+        background-color: #575757;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="menu">
+      <h2>Menu</h2>
+      <a href="index.html">Home</a>
+      <a href="appointments.html">Appointments</a>
+      <a href="plans.html">Plans</a>
+      <a href="tasks.html">Tasks</a>
+      <a href="others.html">Others</a>
+      <a href="account.html">Account</a>
+    </div>
+
+    <div class="content">
+      <h1>Tasks</h1>
+      <ul class="task-list" id="taskList">
+        <!-- Nhiệm vụ sẽ được thêm ở đây -->
+      </ul>
+
+      <div class="add-task">
+        <input type="text" id="newTask" placeholder="Add new task..." />
+        <button onclick="addTask()">Thêm</button>
+      </div>
+    </div>
+
+    <script>
+      function addTask() {
+        var taskInput = document.getElementById("newTask");
+        var taskValue = taskInput.value.trim();
+
+        if (taskValue !== "") {
+          var taskList = document.getElementById("taskList");
+
+          var li = document.createElement("li");
+          var checkbox = document.createElement("input");
+          checkbox.type = "checkbox";
+
+          var span = document.createElement("span");
+          span.textContent = taskValue;
+
+          li.appendChild(checkbox);
+          li.appendChild(span);
+
+          taskList.appendChild(li);
+
+          taskInput.value = ""; // Clear the input after adding
+        }
+      }
+    </script>
+  </body>
+</html>

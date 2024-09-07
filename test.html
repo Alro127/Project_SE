@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="vi, en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Working calendar</title>
+    <link rel="stylesheet" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .add-info {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 20px;
+      }
+
+      .add-info button {
+        border: none;
+        background-color: #4caf50;
+        color: white;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+
+      .add-info button:hover {
+        background-color: #45a049;
+      }
+
+      .info-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .info-item {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      .info-item input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      .info-item .remove-button {
+        background-color: #f44336;
+        border: none;
+        color: white;
+        padding: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+      }
+
+      .info-item .remove-button:hover {
+        background-color: #d32f2f;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content">
+      <h2>Additional Information</h2>
+      <div class="add-info">
+        <button id="add-info-button">+ Add Information</button>
+      </div>
+      <div id="info-container" class="info-container">
+        <!-- Các ô thông tin sẽ được thêm vào đây -->
+      </div>
+    </div>
+
+    <script>
+      document
+        .getElementById("add-info-button")
+        .addEventListener("click", function () {
+          // Tạo một trường thông tin mới
+          var infoContainer = document.getElementById("info-container");
+
+          var newInfoDiv = document.createElement("div");
+          newInfoDiv.className = "info-item";
+
+          var schoolName = document.createElement("input");
+          schoolName.type = "text";
+          schoolName.placeholder = "Tên trường";
+
+          var degree = document.createElement("input");
+          degree.type = "text";
+          degree.placeholder = "Bằng cấp";
+
+          var duration = document.createElement("input");
+          duration.type = "text";
+          duration.placeholder = "Thời gian học";
+
+          var removeButton = document.createElement("button");
+          removeButton.textContent = "Remove";
+          removeButton.className = "remove-button";
+          removeButton.addEventListener("click", function () {
+            infoContainer.removeChild(newInfoDiv);
+          });
+
+          newInfoDiv.appendChild(schoolName);
+          newInfoDiv.appendChild(degree);
+          newInfoDiv.appendChild(duration);
+          newInfoDiv.appendChild(removeButton);
+
+          infoContainer.appendChild(newInfoDiv);
+        });
+    </script>
+  </body>
+</html>
